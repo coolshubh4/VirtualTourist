@@ -13,13 +13,11 @@ class TravelLocationsMapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     var longPress: UILongPressGestureRecognizer!
-    //var mapAnnotations = [MKPointAnnotation]()
     var pinDropLocation: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.hidden = true
         longPress = UILongPressGestureRecognizer(target: self, action: "dropPin:")
         longPress.minimumPressDuration = 0.5
         mapView.addGestureRecognizer(longPress)
@@ -27,39 +25,37 @@ class TravelLocationsMapViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.hidden = true
+    }
+    
     func dropPin(gesture: UILongPressGestureRecognizer) {
         
         let touchPoint: CGPoint = gesture.locationInView(mapView)
         let touchPointCoordinates: CLLocationCoordinate2D = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView)
-        //getPinDropLocation(CLLocation(latitude: touchPointCoordinates.latitude, longitude: touchPointCoordinates.longitude))
         
         if UIGestureRecognizerState.Began == gesture.state {
-            CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: touchPointCoordinates.latitude, longitude: touchPointCoordinates.longitude)) { placemarks, error in
-                if error != nil {
-                    let errMsg: String? = (error!.code == 8) ? "User location cannot be located on the map. Please retry with a different location" : "No network connection available"
-                    println("\(errMsg)")
-                } else {
-                    if placemarks == nil {
-                        println("No Lacation Data")
-                        self.pinDropLocation = nil
-                    } else {
-                        var placemark = placemarks[0] as! CLPlacemark
-                        println("placemark addressDictionary - \(placemark.addressDictionary)")
-                        let name = placemark.addressDictionary["Name"] as! String
-                        let area = placemark.addressDictionary["SubAdministrativeArea"] as! String
-                        self.pinDropLocation = name + ", " + area
-                        let mapAnnotation = MKPointAnnotation()
-                        mapAnnotation.coordinate = touchPointCoordinates
-                        mapAnnotation.title = "Dropped Pin"
-                        mapAnnotation.subtitle = self.pinDropLocation
-                        self.mapView.addAnnotation(mapAnnotation)
-                    }
-                }
-            }
+            let droppedPin = Pin(annotationLatitude: touchPointCoordinates.latitude, annotationLongitude: touchPointCoordinates.longitude)
+            droppedPin.coordinate = touchPointCoordinates
+            mapView.addAnnotation(droppedPin)
         }
     }
     
     // MARK: - MKMapViewDelegate
+    
+    func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
+        
+        if view.selected {
+            
+            let pin = view.annotation as! Pin
+            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoAlbumViewController") as! PhotoAlbumViewController
+            navigationController?.navigationBar.hidden = false
+            navigationController?.pushViewController(controller, animated: true)
+            controller.pin = pin
+        }
+    }
+    
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         
         let reuseId = "mapAnnotation"
@@ -67,16 +63,25 @@ class TravelLocationsMapViewController: UIViewController, MKMapViewDelegate {
         
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView!.canShowCallout = true
+            pinView!.canShowCallout = false
             pinView!.pinColor = .Red
             pinView!.animatesDrop = true
-            pinView!.rightCalloutAccessoryView = UIButton.buttonWithType(.DetailDisclosure) as! UIButton
+            //pinView!.setSelected(true, animated: true)
         }
         else {
             pinView!.annotation = annotation
         }
         
         return pinView
+    }
+    
+    func mapView(mapView: MKMapView!, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        if control == annotationView.rightCalloutAccessoryView {
+            navigationController?.navigationBar.hidden = false
+            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoAlbumViewController") as! UIViewController
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
 
 }

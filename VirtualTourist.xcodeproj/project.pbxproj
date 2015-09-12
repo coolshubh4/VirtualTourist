@@ -16,6 +16,12 @@
 		9866A41C1B9CABE9004BD701 /* VirtualTouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9866A41B1B9CABE9004BD701 /* VirtualTouristTests.swift */; };
 		98C1E7A61B9CACF900E2728B /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C1E7A51B9CACF900E2728B /* CoreDataStackManager.swift */; };
 		98C1E7A71B9CACF900E2728B /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C1E7A51B9CACF900E2728B /* CoreDataStackManager.swift */; };
+		98E42D791BA4392F000DCA57 /* PhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E42D781BA4392F000DCA57 /* PhotoAlbumViewController.swift */; };
+		98E42D7A1BA4392F000DCA57 /* PhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E42D781BA4392F000DCA57 /* PhotoAlbumViewController.swift */; };
+		98E42D7C1BA43BA7000DCA57 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E42D7B1BA43BA7000DCA57 /* Pin.swift */; };
+		98E42D7D1BA43BA7000DCA57 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E42D7B1BA43BA7000DCA57 /* Pin.swift */; };
+		98E42D7F1BA49685000DCA57 /* VirtualTouristClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E42D7E1BA49685000DCA57 /* VirtualTouristClient.swift */; };
+		98E42D801BA49685000DCA57 /* VirtualTouristClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E42D7E1BA49685000DCA57 /* VirtualTouristClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +47,9 @@
 		9866A41A1B9CABE9004BD701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9866A41B1B9CABE9004BD701 /* VirtualTouristTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualTouristTests.swift; sourceTree = "<group>"; };
 		98C1E7A51B9CACF900E2728B /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
+		98E42D781BA4392F000DCA57 /* PhotoAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoAlbumViewController.swift; sourceTree = "<group>"; };
+		98E42D7B1BA43BA7000DCA57 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
+		98E42D7E1BA49685000DCA57 /* VirtualTouristClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTouristClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +94,10 @@
 				9866A4041B9CABE9004BD701 /* VirtualTourist.xcdatamodeld */,
 				98C1E7A51B9CACF900E2728B /* CoreDataStackManager.swift */,
 				9866A4021B9CABE9004BD701 /* AppDelegate.swift */,
+				98E42D7E1BA49685000DCA57 /* VirtualTouristClient.swift */,
+				98E42D7B1BA43BA7000DCA57 /* Pin.swift */,
 				9866A4071B9CABE9004BD701 /* TravelLocationsMapViewController.swift */,
+				98E42D781BA4392F000DCA57 /* PhotoAlbumViewController.swift */,
 				9866A4091B9CABE9004BD701 /* Main.storyboard */,
 				9866A40C1B9CABE9004BD701 /* Images.xcassets */,
 				9866A40E1B9CABE9004BD701 /* LaunchScreen.xib */,
@@ -221,7 +233,10 @@
 			files = (
 				9866A4081B9CABE9004BD701 /* TravelLocationsMapViewController.swift in Sources */,
 				98C1E7A61B9CACF900E2728B /* CoreDataStackManager.swift in Sources */,
+				98E42D7F1BA49685000DCA57 /* VirtualTouristClient.swift in Sources */,
 				9866A4061B9CABE9004BD701 /* VirtualTourist.xcdatamodeld in Sources */,
+				98E42D7C1BA43BA7000DCA57 /* Pin.swift in Sources */,
+				98E42D791BA4392F000DCA57 /* PhotoAlbumViewController.swift in Sources */,
 				9866A4031B9CABE9004BD701 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,7 +246,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9866A41C1B9CABE9004BD701 /* VirtualTouristTests.swift in Sources */,
+				98E42D801BA49685000DCA57 /* VirtualTouristClient.swift in Sources */,
 				98C1E7A71B9CACF900E2728B /* CoreDataStackManager.swift in Sources */,
+				98E42D7A1BA4392F000DCA57 /* PhotoAlbumViewController.swift in Sources */,
+				98E42D7D1BA43BA7000DCA57 /* Pin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
